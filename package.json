@@ -1,16 +1,26 @@
 {
   "name": "altinkaynak",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "currency",
+    "rate",
+    "altinkaynak",
+    "usd",
+    "eur"
+  ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "xml2js": "^0.4.23"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mustafa-mercanli/altinkaynak.git"
   }
 }
