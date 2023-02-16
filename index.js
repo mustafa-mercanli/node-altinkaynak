@@ -43,9 +43,13 @@ class Altinkaynak{
             
             const post_req = http.request(options, function(res) {
                 res.setEncoding('utf8');
+                let data = "";
                 res.on('data', (chunk) => {
+                    data+=chunk;
+                });
+                res.on('end',()=>{
                     const parser = new xml2js.Parser();
-                    parser.parseStringPromise(chunk).then((result) => {
+                    parser.parseStringPromise(data).then((result) => {
                         const xml_node = result["soap:Envelope"]["soap:Body"][0]["GetCurrencyResponse"][0]["GetCurrencyResult"];
                         parser.parseStringPromise(xml_node).then((result)=>{
                             const try_currencies = {};
@@ -66,10 +70,10 @@ class Altinkaynak{
                         }).catch((err)=>{
                             reject(err);
                         })
-                      })
+                    })
                       .catch((err) => {
                         reject(err);
-                      });
+                    });
                 });
             }).on("error", (err) => {
                 reject(err);
